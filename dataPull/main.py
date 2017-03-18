@@ -7,6 +7,10 @@ import time
 import datetime
 import requests
 
+def main():
+    dP = dataPull()
+    dP.timer()
+
 class dataPull(object):
     '''
     classdocs
@@ -58,5 +62,4 @@ class dataPull(object):
             counter += 1    
             
 if __name__ == '__main__':
-    dP = dataPull()
-    dP.timer()
+    main()

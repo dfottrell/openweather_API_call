@@ -10,6 +10,7 @@ import requests
 def main():
     dP = dataPull()
     dP.timer()
+    return
 
 class dataPull(object):
     '''
@@ -55,10 +56,11 @@ class dataPull(object):
     def timer(self):
         counter = 0
         # Note - requests should not be more than once every 10 minutes, direction from openweathermap.org
-        while (counter <= 1):          # This is for testing phase only, can be deleted in production
-            time.sleep(3)              # Timing function waits 5 minutes before triggering the next data pull
-            #gW = dataPull()  
-            #gW.getWeather()            # Calls the pullWeather class to execute a current weather pull
+        # This timer will be used to prevent excessive calls to the openweathermap API
+        while (counter <= 1):          # This is for testing phase only, will change to a large number when proven
+            gW = dataPull()  
+            gW.getWeather()            # Calls the pullWeather class to execute a current weather pull
+            time.sleep(3)              # Timing function waits after triggering the data pull
             counter += 1    
             
 if __name__ == '__main__':
